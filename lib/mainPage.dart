@@ -6,6 +6,23 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_app/PostPage.dart';
 
+int _selectedIndex = 0;
+
+final screen = [
+  Center(
+    child: PostPage(),
+  ),
+  Center(
+    child: Text("2"),
+  ),
+  Center(
+    child: Text("3"),
+  ),
+  Center(
+    child: Text("4"),
+  )
+];
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -14,22 +31,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
-
-  final screen = [
-    Center(
-      child: PostPage(),
-    ),
-    Center(
-      child: Text("2"),
-    ),
-    Center(
-      child: Text("3"),
-    ),
-    Center(
-      child: Text("4"),
-    )
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,8 +104,6 @@ class BottomNavigationBar1 extends StatefulWidget {
 }
 
 class _BottomNavigationBar1State extends State<BottomNavigationBar1> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -244,7 +243,10 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => null,
+            onTap: () {
+              _selectedIndex = 3;
+              print(_selectedIndex);
+            },
           ),
           ListTile(
             leading: Icon(Icons.description),
