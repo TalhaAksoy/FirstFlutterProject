@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_app/PostPage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -17,7 +18,7 @@ class _MainPageState extends State<MainPage> {
 
   final screen = [
     Center(
-      child: Text("1"),
+      child: PostPage(),
     ),
     Center(
       child: Text("2"),
@@ -25,11 +26,16 @@ class _MainPageState extends State<MainPage> {
     Center(
       child: Text("3"),
     ),
+    Center(
+      child: Text("4"),
+    )
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("42 Social"),
+      ),
       drawer: NavBar(),
       backgroundColor: Colors.white,
       bottomNavigationBar: Container(
@@ -49,7 +55,7 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconBottomBar(
-                    text: "home",
+                    text: "Home",
                     icon: Icons.home,
                     selected: _selectedIndex == 0,
                     onPressed: () {
@@ -59,8 +65,8 @@ class _MainPageState extends State<MainPage> {
                     },
                   ),
                   IconBottomBar(
-                    text: "home",
-                    icon: Icons.search,
+                    text: "Create Post",
+                    icon: Icons.add,
                     selected: _selectedIndex == 1,
                     onPressed: () {
                       setState(() {
@@ -69,8 +75,8 @@ class _MainPageState extends State<MainPage> {
                     },
                   ),
                   IconBottomBar(
-                    text: "home",
-                    icon: Icons.add,
+                    text: "Search",
+                    icon: Icons.search,
                     selected: _selectedIndex == 2,
                     onPressed: () {
                       setState(() {
@@ -203,8 +209,9 @@ class NavBar extends StatelessWidget {
             accountName: Text("Saksoy"),
             accountEmail: Text("example@gmail.com"),
             currentAccountPicture: CircleAvatar(
-              radius: 30,
+              radius: 20,
               backgroundImage: AssetImage('images/anime_girl_pp.gif'),
+              backgroundColor: Colors.transparent,
             ),
             decoration: BoxDecoration(
                 color: Colors.blue,
