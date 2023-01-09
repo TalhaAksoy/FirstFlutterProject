@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_app/PostPage.dart';
+import 'package:my_app/settingPage.dart';
 
 int _selectedIndex = 0;
 
@@ -17,9 +20,6 @@ final screen = [
   ),
   Center(
     child: Text("3"),
-  ),
-  Center(
-    child: Text("4"),
   )
 ];
 
@@ -38,11 +38,9 @@ class _MainPageState extends State<MainPage> {
         title: Text("42 Social"),
       ),
       drawer: NavBar(),
-      backgroundColor: Colors.white,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-              colors: [Color(0xff4338CA), Color(0xff6D28D9)]),
+          color: Color.fromARGB(115, 32, 32, 32),
         ),
         child: BottomAppBar(
           elevation: 0,
@@ -96,71 +94,6 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class BottomNavigationBar1 extends StatefulWidget {
-  const BottomNavigationBar1({super.key});
-
-  @override
-  State<BottomNavigationBar1> createState() => _BottomNavigationBar1State();
-}
-
-class _BottomNavigationBar1State extends State<BottomNavigationBar1> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-            colors: [Color(0xff4338CA), Color(0xff6D28D9)]),
-      ),
-      child: BottomAppBar(
-        elevation: 0,
-        color: Colors.transparent,
-        child: SizedBox(
-          height: 56,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconBottomBar(
-                  text: "home",
-                  icon: Icons.home,
-                  selected: _selectedIndex == 0,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 0;
-                    });
-                  },
-                ),
-                IconBottomBar(
-                  text: "home",
-                  icon: Icons.search,
-                  selected: _selectedIndex == 1,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 1;
-                    });
-                  },
-                ),
-                IconBottomBar(
-                  text: "home",
-                  icon: Icons.add,
-                  selected: _selectedIndex == 2,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 2;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class IconBottomBar extends StatelessWidget {
   final String text;
   final IconData icon;
@@ -180,11 +113,12 @@ class IconBottomBar extends StatelessWidget {
         IconButton(
             onPressed: onPressed,
             icon: Icon(icon,
-                size: 25, color: selected ? Colors.white : Colors.grey)),
+                size: selected ? 25 : 20,
+                color: selected ? Colors.white : Colors.grey)),
         Text(
           text,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: selected ? 0 : 12,
             height: 1,
             color: selected ? Colors.white : Colors.grey,
           ),
@@ -244,8 +178,8 @@ class NavBar extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: () {
-              _selectedIndex = 3;
-              print(_selectedIndex);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingPage()));
             },
           ),
           ListTile(
@@ -257,7 +191,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             title: Text('Exit'),
             leading: Icon(Icons.exit_to_app),
-            onTap: () => null,
+            onTap: () => {exit(0)},
           ),
         ],
       ),

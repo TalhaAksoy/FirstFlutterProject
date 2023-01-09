@@ -35,7 +35,6 @@ class _PostPageState extends State<PostPage> {
               Icon(
                 Icons.circle,
                 size: 4,
-                color: Colors.black,
               ),
               SizedBox(width: 5),
               Text("2d")
@@ -44,7 +43,6 @@ class _PostPageState extends State<PostPage> {
           Text(
             postText,
             style: TextStyle(
-              color: Colors.grey[900],
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -54,20 +52,31 @@ class _PostPageState extends State<PostPage> {
         ],
       ),
       subtitle: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.comment,
-            color: Colors.black,
+          Row(
+            children: [
+              Icon(
+                Icons.comment,
+              ),
+              SizedBox(width: 10),
+              Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+              SizedBox(width: 5),
+              Text("12"),
+            ],
           ),
-          SizedBox(width: 5),
-          Text("Comments"),
-          SizedBox(width: 10),
-          Icon(
-            Icons.favorite,
-            color: Colors.black,
-          ),
-          SizedBox(width: 5),
-          Text("Like")
+          Row(
+            children: [
+              Text("Posted By : "),
+              Text(
+                "Android",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          )
         ],
       ),
     ));
@@ -76,7 +85,6 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       body: Center(
         child: ListView(
           children: <Widget>[
