@@ -14,7 +14,6 @@ class SettingPageState extends State<SettingPage> {
       appBar: AppBar(
         title: Text("Settings Page"),
       ),
-      backgroundColor: Colors.grey[100],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
