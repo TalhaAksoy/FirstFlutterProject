@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_app/PostPage.dart';
+import 'package:my_app/createPost.dart';
 import 'package:my_app/settingPage.dart';
 
 int _selectedIndex = 0;
@@ -16,7 +17,7 @@ final screen = [
     child: PostPage(),
   ),
   Center(
-    child: Text("2"),
+    child: CreatePost(),
   ),
   Center(
     child: Text("3"),
